@@ -12,5 +12,7 @@ public class Perfil {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPerfil;
+
+    @Column (name = "nombre")
     private String nombre;
 }

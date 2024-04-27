@@ -3,7 +3,6 @@ package ingSistemas2.ingenieriles.songStock.delegate.impl;
 
 import ingSistemas2.ingenieriles.songStock.delegate.RegistroPersonaDelegate;
 import ingSistemas2.ingenieriles.songStock.dto.RequestRegistroPersonaDTO;
-import ingSistemas2.ingenieriles.songStock.services.PerfilService;
 import ingSistemas2.ingenieriles.songStock.services.PersonaService;
 import ingSistemas2.ingenieriles.songStock.services.UsuarioService;
 import lombok.RequiredArgsConstructor;
