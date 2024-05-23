@@ -8,10 +8,18 @@ import lombok.Setter;
 @Table(name = "Usuario")
 @Getter
 @Setter
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "idusuario")
     private Integer idUsuario;
+
+    @Column (name = "nombre")
+    private String nombre;
+
+    @Column (name = "apellido")
+    private String apellido;
 
     @Column (name = "usuario")
     private String usuario;
@@ -19,10 +27,16 @@ public class Usuario {
     @Column (name = "contrasena")
     private String contrasena;
 
-    @Column (name = "idPersona")
-    private Integer idPersona;
+    @Column (name = "correo")
+    private String correo;
 
-    @Column (name = "idPerfil")
-    private String idPerfil;
+    @Column (name = "estado")
+    private Integer estado;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipoperfil", insertable = false, updatable = false)
+    private TipoPerfil tipoPerfil;
+
+
 }
 
