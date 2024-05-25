@@ -29,4 +29,9 @@ public class ViniloController {
         viniloDelegate.guardarVinilo(viniloDTO);
     }
 
+    @GetMapping(value = "/buscar/{id}")
+    public ViniloDTO buscarVinilo(@PathVariable Integer idVinilo){
+        return viniloService.buscarViniloId(idVinilo);
+    }
+
 }

@@ -32,9 +32,11 @@ public class UsuarioDelegateImpl implements UsuarioDelegate {
         try{
            sesion.setContrasena(Base64.getEncoder().encodeToString(sesion.getContrasena().getBytes()));
            usuarioService.inicioSesion(sesion);
+           System.out.println("El usuario inicio sesion exitosamente");
         }catch (Exception ex){
-
+            System.out.println("Ha ocurrido un error al iniciar sesion: " + ex);
         }
     }
+
 
 }

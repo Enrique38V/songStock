@@ -9,6 +9,4 @@ public interface UsuarioDelegate {
 
     void inicioSesion(SesionDTO sesion);
 
-
-
 }

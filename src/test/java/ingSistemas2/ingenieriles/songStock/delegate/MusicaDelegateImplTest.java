@@ -32,18 +32,14 @@ public class MusicaDelegateImplTest {
 
     @Test
     public void testGuardarCancion() {
-        // Arrange
         MusicaDTO musicaDTO = new MusicaDTO();
-        musicaDTO.setIdVendedor(1); // Establecer el ID del vendedor
+        musicaDTO.setIdVendedor(1);
         Vendedor vendedor = new Vendedor();
-        vendedor.setIdUsuario(1); // Establecer el ID del vendedor simulado
-        Musica musica = new Musica(); // Simular la canción
-        // Simular el comportamiento de los servicios y helpers
+        vendedor.setIdUsuario(1);
+        Musica musica = new Musica();
         when(vendedorService.consultarVendedor(1)).thenReturn(vendedor);
-        when(musicaHelper.helperMusictaToEntity(musicaDTO)).thenReturn(musica);
-        // Act
+        when(musicaHelper.helperMusicaToEntity(musicaDTO)).thenReturn(musica);
         musicaDelegate.guardarCancion(musicaDTO);
-        // Assert
         verify(musicaService, times(1)).guardarCancion(musica);
     }
 }

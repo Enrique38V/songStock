@@ -19,4 +19,16 @@ public class ViniloHelper {
         v.setPrecio(viniloDTO.getPrecio());
         return v;
     }
+
+
+    public ViniloDTO helperViniloToDTO(Vinilo vinilo) {
+        ViniloDTO v = new ViniloDTO();
+        v.setIdVinilo(vinilo.getIdVinilo());
+        v.setNombre(vinilo.getNombre());
+        v.setArtista(vinilo.getArtista());
+        v.setGenero(vinilo.getGenero());
+        v.setStock(vinilo.getStock());
+        v.setPrecio(vinilo.getPrecio());
+        return v;
+    }
 }

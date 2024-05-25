@@ -24,7 +24,7 @@ public class MusicaDelegateImpl implements MusicaDelegate {
     public void guardarCancion(MusicaDTO musicaDTO) {
         Vendedor v = vendedorService.consultarVendedor(musicaDTO.getIdVendedor());
         if(v.getIdUsuario() != null){
-            Musica m = musicaHelper.helperMusictaToEntity(musicaDTO);
+            Musica m = musicaHelper.helperMusicaToEntity(musicaDTO);
             m.setVendedor(v);
             musicaService.guardarCancion(m);
         }

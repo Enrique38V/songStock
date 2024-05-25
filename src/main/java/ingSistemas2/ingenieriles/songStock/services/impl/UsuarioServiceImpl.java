@@ -53,4 +53,10 @@ public class UsuarioServiceImpl implements UsuarioService {
     public UsuarioDTO inicioSesion(SesionDTO sesion){
         return usuarioHelper.helperUsuarioToDTO(usuarioRepository.findByContrasenaAndCorreo(sesion.getContrasena(), sesion.getCorreo()));
     }
+
+    @Override
+    public void cambiarEstado(Integer idUsuario, Integer estado){
+        usuarioRepository.cambiarEstadoUsuario(idUsuario, estado);
+        System.out.println("Se ha realizado el cambio del estado");
+    }
 }

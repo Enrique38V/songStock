@@ -14,5 +14,7 @@ public interface UsuarioService {
 
     UsuarioDTO inicioSesion(SesionDTO sesion);
 
+    void cambiarEstado(Integer idUsuario, Integer estado);
+
    // Integer validacionRegistro(UsuarioDTO usuarioDTO);
 }

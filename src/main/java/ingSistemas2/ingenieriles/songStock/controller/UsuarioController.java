@@ -88,4 +88,28 @@ public class UsuarioController {
         usuarioDelegate.inicioSesion(sesion);
         return ResponseEntity.ok().build();
     }
+
+    /**
+     * Encargado de cambiar el estado del Usuario a deshabilitado
+     *
+     * @request idUsuario
+     *            Objeto con los datos de la Usuario
+     */
+    @GetMapping(value = "/deshabilitar/{idUsuario}")
+    private ResponseEntity<?> deshabilitarUsuario(@PathVariable Integer idUsuario){
+        usuarioService.cambiarEstado(idUsuario, 2);
+        return ResponseEntity.ok().build();
+    }
+
+    /**
+     * Encargado de cambiar el estado del Usuario a habilitado
+     *
+     * @request idUsuario
+     *            Objeto con los datos de la Usuario
+     */
+    @GetMapping(value = "/habilitar/{idUsuario}")
+    private ResponseEntity<?> habilitarUsuario(@PathVariable Integer idUsuario){
+        usuarioService.cambiarEstado(idUsuario, 1);
+        return ResponseEntity.ok().build();
+    }
 }

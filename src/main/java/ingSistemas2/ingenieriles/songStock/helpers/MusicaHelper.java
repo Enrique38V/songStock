@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class MusicaHelper {
 
 
-    public Musica helperMusictaToEntity(MusicaDTO musicaDTO) {
+    public Musica helperMusicaToEntity(MusicaDTO musicaDTO) {
         Musica m = new Musica();
         m.setIdMusica(musicaDTO.getIdCancion());
         m.setNombre(musicaDTO.getNombre());
@@ -16,6 +16,17 @@ public class MusicaHelper {
         m.setGenero(musicaDTO.getGenero());
         m.setPeso(musicaDTO.getPeso());
         m.setPrecio(musicaDTO.getPrecio());
+        return m;
+    }
+
+    public MusicaDTO helperMusicaToDTO(Musica musica) {
+        MusicaDTO m = new MusicaDTO();
+        m.setIdCancion(musica.getIdMusica());
+        m.setNombre(musica.getNombre());
+        m.setArtista(musica.getArtista());
+        m.setGenero(musica.getGenero());
+        m.setPeso(musica.getPeso());
+        m.setPrecio(musica.getPrecio());
         return m;
     }
 }

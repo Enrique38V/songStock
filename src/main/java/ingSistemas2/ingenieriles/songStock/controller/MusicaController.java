@@ -29,5 +29,11 @@ public class MusicaController {
     public void actualizarCancion(@RequestBody MusicaDTO musicaDTO){
         musicaDelegate.guardarCancion(musicaDTO);
     }
-    
+
+    @GetMapping(value = "/buscar/{id}")
+    public MusicaDTO buscarCancion(@PathVariable Integer idMusica){
+        return musicaService.buscarCancionId(idMusica);
+    }
+
+
 }
