@@ -16,6 +16,7 @@ package ingSistemas2.ingenieriles.songStock.controller;
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
+import ingSistemas2.ingenieriles.songStock.config.songExceptions.UsuarioCreationException;
 import ingSistemas2.ingenieriles.songStock.delegate.UsuarioDelegate;
 import ingSistemas2.ingenieriles.songStock.dto.SesionDTO;
 import ingSistemas2.ingenieriles.songStock.dto.UsuarioDTO;
@@ -48,9 +49,15 @@ public class UsuarioController {
      *            objeto con los datos de registro
      */
     @PostMapping(value = "/registro")
-    private ResponseEntity<?> registroUsuario(@RequestBody UsuarioDTO usuarioDTO){
-        usuarioDelegate.registroUsuario(usuarioDTO);
-        return ResponseEntity.ok().build();
+    private ResponseEntity<?> registroUsuario(@RequestBody UsuarioDTO usuarioDTO) throws UsuarioCreationException {
+        try {
+            System.out.println(usuarioDTO.getUsuario());
+            System.out.println(usuarioDTO.getContrasena());
+            usuarioDelegate.registroUsuario(usuarioDTO);
+        }catch (UsuarioCreationException ex){
+            return ResponseEntity.badRequest().body("Por favor completar bien los campos");
+        }
+        return ResponseEntity.ok("funcionando ando");
     }
 
     /**
@@ -61,8 +68,11 @@ public class UsuarioController {
      */
     @GetMapping(value = "/{idUsuario}")
     private ResponseEntity<?> consultaUsuario(@PathVariable Integer idUsuario){
-        usuarioService.consultaUsuario(idUsuario);
-        return ResponseEntity.ok().build();
+        UsuarioDTO  usu = usuarioService.consultaUsuario(idUsuario);
+        if(usu == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(usu);
     }
 
     /**
@@ -85,8 +95,11 @@ public class UsuarioController {
      */
     @PostMapping(value = "/inicarSesion")
     private ResponseEntity<?> inicioSesison(@RequestBody SesionDTO sesion){
-        usuarioDelegate.inicioSesion(sesion);
-        return ResponseEntity.ok().build();
+        UsuarioDTO usu = usuarioDelegate.inicioSesion(sesion);
+        if(usu == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(usu);
     }
 
     /**
@@ -111,5 +124,11 @@ public class UsuarioController {
     private ResponseEntity<?> habilitarUsuario(@PathVariable Integer idUsuario){
         usuarioService.cambiarEstado(idUsuario, 1);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping(value = "/generos")
+    private ResponseEntity<?>consultarGeneros(){
+        String json = usuarioDelegate.consultarGenero();
+        return ResponseEntity.ok(json);
     }
 }

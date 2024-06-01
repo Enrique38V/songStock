@@ -9,6 +9,8 @@ import ingSistemas2.ingenieriles.songStock.services.MusicaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MusicaServiceImpl implements MusicaService {
 
@@ -27,5 +29,21 @@ public class MusicaServiceImpl implements MusicaService {
     public MusicaDTO buscarCancionId(Integer idMusica){
         Musica m = musicaRepostitory.findByIdMusica(idMusica);
         return musicaHelper.helperMusicaToDTO(m);
+    }
+
+    @Override
+    public List<Musica> buscarCancionCliente(Integer idVendedor){
+       List<Musica> m =  musicaRepostitory.consultaMusicaVendedor(idVendedor);
+        System.out.println("por donde hptas esta cogiendo");
+        System.out.println(m);
+        return m;
+    }
+
+    @Override
+    public List<Musica> buscarCancionComprador(Integer idComprador){
+        List<Musica> m =  musicaRepostitory.consultaMusicaVendedor(idComprador);
+        System.out.println("por donde hptas esta cogiendo");
+        System.out.println(m);
+        return m;
     }
 }

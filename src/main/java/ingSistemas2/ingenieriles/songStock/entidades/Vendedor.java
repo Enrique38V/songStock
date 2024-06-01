@@ -11,12 +11,13 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "vendedor")
+@PrimaryKeyJoinColumn(name = "idvendedor")
 public class Vendedor extends Usuario{
 
-    @Column (name = "direccionTienda")
+    @Column (name = "direcciontienda")
     private String direccionTienda;
 
-    @Column (name = "nombreTienda")
+    @Column (name = "nombretienda")
     private String nombreTienda;
 
     @OneToMany(mappedBy = "vendedor", cascade = CascadeType.ALL, orphanRemoval = true)

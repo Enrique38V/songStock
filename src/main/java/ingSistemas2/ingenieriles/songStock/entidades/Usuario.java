@@ -34,7 +34,7 @@ public class Usuario {
     private Integer estado;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "tipoperfil", insertable = false, updatable = false)
+    @Column(name = "tipoperfil")
     private TipoPerfil tipoPerfil;
 
 

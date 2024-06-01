@@ -30,6 +30,9 @@ public class Musica {
     @Column (name = "peso")
     private String peso;
 
+    @Column (name = "descripcion")
+    private String descripcion;
+
     @Column (name = "precio")
     private BigDecimal precio;
 

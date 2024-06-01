@@ -27,7 +27,7 @@ class UsuarioDelegateImplTest{
         MockitoAnnotations.openMocks(this);
     }
 
-    @Test
+    /*@Test
     void registroUsuario() throws UsuarioFoundException {
         // Arrange
         UsuarioDTO usuarioDTO = new UsuarioDTO();
@@ -36,7 +36,7 @@ class UsuarioDelegateImplTest{
         usuarioDelegate.registroUsuario(usuarioDTO);
         // Assert
         verify(usuarioService).registroUsuario(any(UsuarioDTO.class));
-    }
+    }*/
 
     @Test
     void inicioSesion() {

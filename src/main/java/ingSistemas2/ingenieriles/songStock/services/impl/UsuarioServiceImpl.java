@@ -22,8 +22,11 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public Integer registroUsuario(UsuarioDTO usuarioDTO) throws UsuarioFoundException{
+        System.out.println("llego a registro de Usuario");
             if (validacionRegistro(usuarioDTO)) {
-                Usuario usu = usuarioHelper.helperUsuarioDTOToEntity(usuarioDTO);
+                System.out.println(usuarioDTO.getTipoPerfil());
+                Usuario usu = usuarioHelper.helperUsuarioDTOsToEntity(usuarioDTO);
+                System.out.println(usu.getUsuario());
                 usu = usuarioRepository.save(usu);
                 return usu.getIdUsuario();
             }
@@ -31,7 +34,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     private Boolean validacionRegistro(UsuarioDTO usuarioDTO){
-        List<Usuario> usuCreados = usuarioRepository.findByUsuarioAndCorreo(usuarioDTO.getUsuario(), usuarioDTO.getCorreo());
+        List<Usuario> usuCreados = usuarioRepository.findByUsuarioOrCorreo(usuarioDTO.getUsuario(), usuarioDTO.getCorreo());
         if(usuCreados.isEmpty()){
             return true;
         }
@@ -46,12 +49,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public UsuarioDTO consultaUsuario(Integer idUsuario) {
-        return usuarioHelper.helperUsuarioToDTO(usuarioRepository.findByIdUsuario(idUsuario));
+        return usuarioHelper.helperUsuarioEntitysToDTO(usuarioRepository.findByIdUsuario(idUsuario));
     }
 
     @Override
     public UsuarioDTO inicioSesion(SesionDTO sesion){
-        return usuarioHelper.helperUsuarioToDTO(usuarioRepository.findByContrasenaAndCorreo(sesion.getContrasena(), sesion.getCorreo()));
+        return usuarioHelper.helperUsuarioEntitysToDTO(usuarioRepository.findByContrasenaAndCorreo(sesion.getContrasena(), sesion.getCorreo()));
     }
 
     @Override

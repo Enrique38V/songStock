@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
-    List<Usuario> findByUsuarioAndCorreo(String usuario, String email);
+    List<Usuario> findByUsuarioOrCorreo(String usuario, String email);
 
     Usuario findByIdUsuario(Integer idUsuario);
 

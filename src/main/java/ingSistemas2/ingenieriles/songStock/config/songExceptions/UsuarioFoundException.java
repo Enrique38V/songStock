@@ -5,4 +5,6 @@ public class UsuarioFoundException extends Exception{
     public UsuarioFoundException(String message){
         super(message);
     }
+
+
 }

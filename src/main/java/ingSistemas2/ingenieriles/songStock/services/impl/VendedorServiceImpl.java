@@ -2,6 +2,7 @@ package ingSistemas2.ingenieriles.songStock.services.impl;
 
 
 
+import ingSistemas2.ingenieriles.songStock.dto.VendedorDTO;
 import ingSistemas2.ingenieriles.songStock.entidades.Vendedor;
 import ingSistemas2.ingenieriles.songStock.repositories.VendedorRepository;
 import ingSistemas2.ingenieriles.songStock.services.VendedorService;
@@ -19,4 +20,5 @@ public class VendedorServiceImpl implements VendedorService {
     public Vendedor consultarVendedor(Integer idVendedor) {
         return vendedorRepository.findByIdUsuario(idVendedor);
     }
+
 }

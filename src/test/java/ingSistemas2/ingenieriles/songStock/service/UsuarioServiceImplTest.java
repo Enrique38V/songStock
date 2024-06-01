@@ -44,7 +44,7 @@ class UsuarioServiceImplTest {
         usuarioDTO.setContrasena("contrasena");
         Usuario usuario = new Usuario();
         usuario.setIdUsuario(1);
-        when(usuarioRepository.findByUsuarioAndCorreo("usuarioNuevo", "correoNuevo")).thenReturn(Arrays.asList());
+        when(usuarioRepository.findByUsuarioOrCorreo("usuarioNuevo", "correoNuevo")).thenReturn(Arrays.asList());
         when(usuarioHelper.helperUsuarioDTOToEntity(usuarioDTO)).thenReturn(usuario);
         when(usuarioRepository.save(usuario)).thenReturn(usuario);
         Integer idUsuario = usuarioService.registroUsuario(usuarioDTO);
@@ -58,7 +58,7 @@ class UsuarioServiceImplTest {
         usuarioDTO.setUsuario("usuarioExistente");
         usuarioDTO.setCorreo("correoExistente");
         usuarioDTO.setContrasena("contrasena");
-        when(usuarioRepository.findByUsuarioAndCorreo("usuarioExistente", "correoExistente")).thenReturn(Arrays.asList(new Usuario()));
+        when(usuarioRepository.findByUsuarioOrCorreo("usuarioExistente", "correoExistente")).thenReturn(Arrays.asList(new Usuario()));
         assertThrows(UsuarioFoundException.class, () -> usuarioService.registroUsuario(usuarioDTO));
     }
 

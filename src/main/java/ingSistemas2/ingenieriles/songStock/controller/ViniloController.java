@@ -6,7 +6,10 @@ import ingSistemas2.ingenieriles.songStock.dto.MusicaDTO;
 import ingSistemas2.ingenieriles.songStock.dto.ViniloDTO;
 import ingSistemas2.ingenieriles.songStock.services.ViniloService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -32,6 +35,15 @@ public class ViniloController {
     @GetMapping(value = "/buscar/{id}")
     public ViniloDTO buscarVinilo(@PathVariable Integer idVinilo){
         return viniloService.buscarViniloId(idVinilo);
+    }
+
+    @GetMapping(value = "/buscar/cancionesVendedor/{idVendedor}")
+    public ResponseEntity<?> buscarCancionComprador(@PathVariable Integer idVendedor){
+        List<ViniloDTO> music =  viniloDelegate.buscarCancionIdVendedor(idVendedor);
+        if(music == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(music);
     }
 
 }

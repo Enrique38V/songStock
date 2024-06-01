@@ -16,6 +16,7 @@ public class MusicaHelper {
         m.setGenero(musicaDTO.getGenero());
         m.setPeso(musicaDTO.getPeso());
         m.setPrecio(musicaDTO.getPrecio());
+        m.setDescripcion(musicaDTO.getDescricion());
         return m;
     }
 
@@ -27,6 +28,7 @@ public class MusicaHelper {
         m.setGenero(musica.getGenero());
         m.setPeso(musica.getPeso());
         m.setPrecio(musica.getPrecio());
+        m.setDescricion(musica.getDescripcion());
         return m;
     }
 }

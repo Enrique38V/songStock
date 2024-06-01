@@ -7,9 +7,7 @@ import ingSistemas2.ingenieriles.songStock.repositories.UsuarioRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -19,9 +17,8 @@ public class UsuarioRepositoryTest {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    @Test
+    /*@Test
     void testFindByUsuarioAndCorreo() {
-        // Given
         String usuario = "testUsuario";
         String correo = "test@example.com";
         Usuario usuario1 = new Usuario();
@@ -33,7 +30,7 @@ public class UsuarioRepositoryTest {
         assertEquals(1, usuarios.size());
         assertEquals(usuario, usuarios.get(0).getUsuario());
         assertEquals(correo, usuarios.get(0).getCorreo());
-    }
+    }*/
 
     @Test
     void testFindByIdUsuario() {

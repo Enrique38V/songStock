@@ -5,7 +5,9 @@ import ingSistemas2.ingenieriles.songStock.delegate.MusicaDelegate;
 import ingSistemas2.ingenieriles.songStock.dto.MusicaDTO;
 import ingSistemas2.ingenieriles.songStock.services.MusicaService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -34,6 +36,25 @@ public class MusicaController {
     public MusicaDTO buscarCancion(@PathVariable Integer idMusica){
         return musicaService.buscarCancionId(idMusica);
     }
+
+    @GetMapping(value = "/buscar/cancionesVendedor/{idVendedor}")
+    public ResponseEntity<?> buscarCancionesVendedor(@PathVariable Integer idVendedor){
+        List<MusicaDTO> music =  musicaDelegate.buscarCancionCliente(idVendedor);
+        if(music == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(music);
+    }
+
+    @GetMapping(value = "/buscar/cancionesComprador/{idComprador}")
+    public ResponseEntity<?> buscarCancionesComprador(@PathVariable Integer idComprador){
+        List<MusicaDTO> music =  musicaDelegate.buscarCancionComprador(idComprador);
+        if(music == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(music);
+    }
+
 
 
 }
