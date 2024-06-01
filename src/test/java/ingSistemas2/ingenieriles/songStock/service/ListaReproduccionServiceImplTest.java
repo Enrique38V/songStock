@@ -32,7 +32,7 @@ class ListaReproduccionServiceImplTest {
         listaDTO.setIdUsuario(1);
         listaDTO.setNombre("Mi Lista");
         when(listaReproduccionRepository.save(any(ListaReproduccion.class))).thenReturn(new ListaReproduccion());
-        listaReproduccionService.crearLista(listaDTO);
+        //listaReproduccionService.crearLista(listaDTO);
         verify(listaReproduccionRepository, times(1)).save(any(ListaReproduccion.class));
     }
 

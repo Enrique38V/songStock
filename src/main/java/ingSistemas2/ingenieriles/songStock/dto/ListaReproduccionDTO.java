@@ -9,5 +9,6 @@ public class ListaReproduccionDTO {
 
     private Integer idLista;
     private String nombre;
+    private String descripcion;
     private Integer idUsuario;
 }

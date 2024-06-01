@@ -51,8 +51,6 @@ public class UsuarioController {
     @PostMapping(value = "/registro")
     private ResponseEntity<?> registroUsuario(@RequestBody UsuarioDTO usuarioDTO) throws UsuarioCreationException {
         try {
-            System.out.println(usuarioDTO.getUsuario());
-            System.out.println(usuarioDTO.getContrasena());
             usuarioDelegate.registroUsuario(usuarioDTO);
         }catch (UsuarioCreationException ex){
             return ResponseEntity.badRequest().body("Por favor completar bien los campos");

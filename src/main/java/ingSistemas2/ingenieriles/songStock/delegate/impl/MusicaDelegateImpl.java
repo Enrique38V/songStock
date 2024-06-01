@@ -30,11 +30,6 @@ public class MusicaDelegateImpl implements MusicaDelegate {
     @Override
     public void guardarCancion(MusicaDTO musicaDTO) {
         try {
-            /*
-            File cancionDest = new File("C:\\xampp\\htdocs\\songStockMusic\\" + cancionFile.getOriginalFilename());
-            cancionFile.transferTo(cancionDest);
-            */
-
             Vendedor v = vendedorService.consultarVendedor(musicaDTO.getIdVendedor());
             if (v.getIdUsuario() != null) {
                 Musica m = musicaHelper.helperMusicaToEntity(musicaDTO);

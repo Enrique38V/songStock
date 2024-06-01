@@ -22,6 +22,9 @@ public class ListaReproduccion {
     @Column(name = "nombre")
     private String nombre;
 
+    @Column(name = "descripcion")
+    private String descripcion;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idcomprador")
     private Comprador comprador;

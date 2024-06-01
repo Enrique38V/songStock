@@ -8,6 +8,8 @@ import ingSistemas2.ingenieriles.songStock.services.ListaReproduccionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class ListaReproduccionServiceImpl implements ListaReproduccionService {
@@ -16,18 +18,17 @@ public class ListaReproduccionServiceImpl implements ListaReproduccionService {
     private ListaReproduccionRepository listaReproduccionRepository;
 
     @Override
-    public void crearLista(ListaReproduccionDTO lista) {
-        Comprador c = new Comprador();
-        c.setIdUsuario(lista.getIdUsuario());
-        ListaReproduccion l = new ListaReproduccion();
-        l.setComprador(c);
-        l.setNombre(lista.getNombre());
-        l.setIdLista(lista.getIdLista());
-        listaReproduccionRepository.save(l);
+    public void crearLista(ListaReproduccion lista) {
+        listaReproduccionRepository.save(lista);
     }
 
     @Override
     public ListaReproduccion consultarListaId(Integer idListaReproduccion){
         return listaReproduccionRepository.findByIdLista(idListaReproduccion);
+    }
+
+    @Override
+    public List<ListaReproduccion> consultarListas(Integer idComprador){
+        return listaReproduccionRepository.consultarListas(idComprador);
     }
 }
